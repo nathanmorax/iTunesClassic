@@ -11,7 +11,7 @@ import SwiftUI
 struct iTunesClassicApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MetadataEditorView(metadata: Metadata())
         }
     }
 }

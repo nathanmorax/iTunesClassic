@@ -6,6 +6,7 @@
 //
 import SwiftUI
 import AppKit
+import UniformTypeIdentifiers
 
 struct ImagePickerView: View {
     var onImagePicked: (NSImage) -> Void
@@ -26,7 +27,12 @@ struct ImagePickerView: View {
 
     private func openImagePicker() {
         let panel = NSOpenPanel()
-        panel.allowedFileTypes = ["png", "jpg", "jpeg", "heic", "tiff"]
+        panel.allowedContentTypes = [
+            .png,
+            .jpeg,
+            .heic,
+            .tiff
+        ]
         panel.canChooseFiles = true
         panel.canChooseDirectories = false
         panel.allowsMultipleSelection = false
