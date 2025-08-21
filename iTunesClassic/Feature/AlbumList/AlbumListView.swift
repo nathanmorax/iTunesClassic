@@ -7,17 +7,20 @@
 import SwiftUI
 
 struct AlbumListView: View {
-    @State private var albums: [Album] = []
-    
+    //@State private var albums: [Album] = []
+    @State private var albums: [Album] = MockData.sampleAlbums
     private let albumService = AlbumService.shared
     private let syncService = MusicSyncService.shared
+    
 
+    
+    
     var body: some View {
         VStack {
             Text("Álbumes agregados hoy 🎶")
                 .font(.title2)
                 .padding()
-
+            
             List {
                 ForEach(albums) { album in
                     Section(header: Text(album.name)) {
@@ -31,7 +34,7 @@ struct AlbumListView: View {
                     }
                 }
             }
-
+            
             Button("Sincronizar con Music.app") {
                 syncService.syncAlbums(albums)
             }
@@ -42,7 +45,7 @@ struct AlbumListView: View {
             return true
         }
     }
-
+    
     func handleDrop(_ providers: [NSItemProvider]) {
         for provider in providers {
             provider.loadItem(forTypeIdentifier: "public.folder", options: nil) { item, _ in
