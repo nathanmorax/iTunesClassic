@@ -57,3 +57,7 @@ struct AlbumListView: View {
         }
     }
 }
+
+#Preview {
+    AlbumListView()
+}
