@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedTab: MusicTab = .artists
+    @State private var selectedTab: MusicTab = .tracks
     
     var body: some View {
         
@@ -21,24 +21,22 @@ struct ContentView: View {
                     .padding(.top, 8)
                 
                 Divider()
-                
+                Spacer()
                 switch selectedTab {
                 case .tracks:
                     SongListView()
                 case .albums:
-                    EmptyView()
+                    AlbumListView()
                 case .artists:
                     EmptyView()
                 case .genres:
                     EmptyView()
                 }
             }
-            //.frame(minWidth: 600, minHeight: 400)
         }
         
     }
 }
-
 
 #Preview {
     ContentView()
@@ -50,6 +48,12 @@ struct LibraryView: View {
         ZStack {
             VStack(alignment: .leading) {
                 Text("LibraryView")
+                
+                List {
+                    Text("Item 1")
+                }
+                .foregroundStyle(.white)
+                Text("PlayList")
                 
                 List {
                     Text("Item 1")
